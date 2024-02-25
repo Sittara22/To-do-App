@@ -1,0 +1,79 @@
+.title{
+    text-align: center;
+    margin: 3rem auto;
+    color: rgb(202, 161, 166);
+
+}
+.taskBarSection{
+    width: 100%;
+    max-width: 70vw;
+    height: 6rem;
+    background-color:rgb(40, 40, 40);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+}
+.inputBar{
+    width: 100%;
+    max-width:28vw;
+    height: 1.75rem;
+    border: none;
+    padding: 0.5rem;
+    margin: 1px;
+    font-weight: 300;
+    font-size: medium;
+    border-radius: 2px;
+}
+.addBtn{
+    width: 4rem;
+    height: 2.75rem;
+    padding: 0.5rem;
+    background-color: rgb(175, 15, 34);
+    color:white;
+    font-weight: 300;
+    border: none ;
+    font-size: medium;
+}
+.taskList{
+    width: 100%;
+    max-width: 80vw;
+    height: 100%;
+    overflow:hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background: rgb(25,25, 25);
+}
+.tasks{
+    list-style: none;
+    font-size: 1.2rem;
+    padding: 2rem;
+    
+}
+.taskText{
+   max-width: 70vw;
+   min-width: 40vw;
+    height: 3rem;
+    background-color: rgb(143, 25, 64);
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+
+}
+.delIcon{
+    width: 1rem;
+    height: 1rem;
+    object-fit: cover;
+    color: white;
+}
+@media screen and (max-width:440) {
+ .taskText{
+    font-size:1rem ;
+ }
+}
