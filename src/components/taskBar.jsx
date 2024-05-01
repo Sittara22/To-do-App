@@ -1,42 +1,37 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './taskBar.css'
 import { useState } from 'react'
-import bin from '../assets/bin.png'
-import { useEffect } from 'react';
+import {TodoContext} from '../context/Context'
+import TodoTask from './TodoTask'
+import {v4 as uuidv4} from 'uuid'
 
 function TaskBar() {
   const [taskValue,setTaskValue]=useState('');
-  const [todoTask,setTodoTask]=useState([]);
-  //retrieve data
-useEffect(()=>{
-    const storedTodo=JSON.parse(localStorage.getItem('todoTask')); 
-    if(storedTodo){
-      setTodoTask(storedTodo);
-    }
-    
-    },[])
-  //store data into local storage 
- useEffect(()=>{
-    localStorage.setItem('todoTask',JSON.stringify(todoTask));
-},[todoTask])
+  const [todoTask,setTodoTask]=useContext(TodoContext);
+
 
  const handleOnChange=(e)=>{
     setTaskValue(e.target.value);
      
   }
 const handleAddTask=()=>{
+  const newTodo={
+    id:uuidv4(),
+    text:taskValue,
+    completed:false,   
+  };
     if(taskValue){
-        setTodoTask([...todoTask,taskValue]);
+        setTodoTask([...todoTask,newTodo]);
          setTaskValue("");         
     }
 
         
 }
-const delTask=(i)=>{
-const newTodoArr=[...todoTask];
-newTodoArr.splice(i,1);
-setTodoTask(newTodoArr);
-}
+useEffect(()=>{
+
+  localStorage.setItem('todos',JSON.stringify(todoTask));
+},[todoTask])
+
   return (
     <>
     <h1 className='title'>TO-DO-App</h1>
@@ -45,14 +40,14 @@ setTodoTask(newTodoArr);
     <button className='addBtn' onClick={handleAddTask}>Add</button>
   </div>
   <div className="taskList">
-       <ul className="tasks">
-        {todoTask.map(((todo,i)=>
-            (<li className='taskText' key={i}>{todo} 
-        <img src={bin} onClick={()=>{delTask(i)}} className='delIcon'/></li>)
+       <div className="tasks">
+        {todoTask.map(((todo,index)=>
+            (
+              <TodoTask key={todo.id} id={todo.id} text={todo.text} index={index} completed={todo.completed} />
+            )
         )) }
-       </ul>
-  </div>
-  </>
+       </div>
+  </div> </>
     
 
   )
