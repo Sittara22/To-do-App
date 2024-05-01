@@ -3,8 +3,6 @@ import { useContext,useRef } from "react";
 import './taskBar.css'
 import bin from '../assets/bin.png'
 import { TodoContext } from '../context/Context'
-import { onDragEnd } from "../../../../../TaskManager/taskManager/src/helpers/onDragEnd";
-
 const TodoTask = ({ id, text,index, completed }) => {
   const [todoTask, setTodoTask] = useContext(TodoContext);
 
