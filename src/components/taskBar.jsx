@@ -5,7 +5,8 @@ import {TodoContext} from '../context/Context'
 import TodoTask from './TodoTask'
 import {v4 as uuidv4} from 'uuid'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter,TouchSensor,
+  MouseSensor, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { arrayMove } from '@dnd-kit/sortable'
 function TaskBar() {
@@ -13,8 +14,20 @@ function TaskBar() {
   const [todoTask,setTodoTask]=useContext(TodoContext);
   // Define sensors for pointer and keyboard events
  const sensors = useSensors(
-  useSensor(PointerSensor),
-  useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 8,
+    },
+  }),
+  useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 200,
+      tolerance: 6,
+    },
+  }),
+  useSensor(KeyboardSensor, {
+    coordinateGetter: sortableKeyboardCoordinates,
+  })
 );
 //get Task Position
 const getTaskPos = id => todoTask.findIndex(task=>task.id === id);
