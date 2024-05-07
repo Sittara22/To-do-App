@@ -51,6 +51,11 @@
     margin: 0 auto;
     background: rgb(25,25, 25);
 }
+.taskDiv{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 .tasks{
     list-style: none;
     font-size: 1.2rem;
@@ -78,6 +83,11 @@
     justify-content: space-between;
     align-items: center;
     width: 7vw;
+}
+.editBar{
+    width: 100%;
+    max-width:20vw;
+    height: 2rem;
 }
 .delIcon , .editIcon{
     width: 1rem;

@@ -68,7 +68,7 @@ setIsEditTask(false);
           onChange={(e) => setIsEditText(e.target.value)}
           onBlur={saveEditedTask}
           autoFocus
-          className='inputBar'
+          className='editBar'
         />
       ) :(<span className='taskText' style={{ color: completed ? "gray" : "white", textDecoration: completed ? "line-through" : "none" }}>
       {isEditText}
