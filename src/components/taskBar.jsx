@@ -16,7 +16,7 @@ function TaskBar() {
  const sensors = useSensors(
   useSensor(MouseSensor, {
     activationConstraint: {
-      distance: 8,
+      distance: 10,
     },
   }),
   useSensor(TouchSensor, {
@@ -50,8 +50,7 @@ setTodoTask((todoTask)=>{
 
 
  const handleOnChange=(e)=>{
-    setTaskValue(e.target.value);
-     
+    setTaskValue(e.target.value);  
   }
 const handleAddTask=()=>{
   const newTodo={
@@ -85,7 +84,7 @@ useEffect(()=>{
        <SortableContext items={todoTask} strategy={verticalListSortingStrategy}>
         {todoTask.map(((todo,index)=>
             (
-              <TodoTask key={todo.id} id={todo.id} text={todo.text} index={index} completed={todo.completed} />
+              <TodoTask key={todo.id} taskValue={taskValue} id={todo.id} text={todo.text} index={index} completed={todo.completed} />
             )
         )) }
        </SortableContext>
