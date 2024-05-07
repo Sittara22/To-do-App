@@ -111,6 +111,9 @@
     width: 7vw;
     padding: 0.2rem;
  }
+ .editBar{
+    max-width:50vw ;
+ }
 
 }
 @media screen and (max-width: 690px){
